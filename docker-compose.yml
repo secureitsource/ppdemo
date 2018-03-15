@@ -19,6 +19,20 @@ services:
       - 5432
     restart: always
 
+services:
+  scope:
+    image: weaveworks/scope:1.8.0
+    network_mode: "host"
+    pid: "host"
+    privileged: true
+    labels:
+      - "works.weave.role=system"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:rw"
+    command:
+      - "--probe.docker=true"
+    restart: always
+
   puppet:
     image: my-puppet-enterprise:2017.3.1
     environment:
@@ -36,18 +50,21 @@ services:
       - ./puppet/modules/motd/:/etc/puppetlabs/code/environments/production/modules/motd/:Z
     ports:
       - 1443:443
+      restart: always
  
   prod-webapp:
     image: my-agentnode:1.0
     hostname: prod-webapp
     domainname: cyberark.local
     privileged: true
+    restart: always
 
   dev-webapp:
     image: my-agentnode:1.0
     hostname: dev-webapp
     domainname: cyberark.local
     privileged: true
+    restart: always
 
   cli:
     environment:
@@ -59,3 +76,4 @@ services:
     hostname: conjurcli
     entrypoint: sleep
     command: infinity
+    restart: always
