@@ -19,7 +19,6 @@ services:
       - 5432
     restart: always
 
-services:
   scope:
     image: weaveworks/scope:1.8.0
     network_mode: "host"
