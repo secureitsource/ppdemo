@@ -1,7 +1,7 @@
 version: '2'
 services:
   conjur:
-    image: registry.tld/conjur-appliance:4.9.3.0
+    image: registry.tld/conjur-appliance:4.9.13.0
     hostname: conjur
     security_opt:
       - label:seccomp:undefined
