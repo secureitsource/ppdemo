@@ -11,8 +11,9 @@ main() {
   docker-compose down
 
   echo "-----"
-  echo "Bring up Conjur and Puppet Master"
+  echo "Bring up Conjur, WeaveScope, and Puppet Master"
   docker-compose up -d conjur
+  docker-compose up -d scope
   docker-compose up -d puppet
   docker-compose up -d cli
 
