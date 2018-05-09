@@ -1,7 +1,7 @@
 version: '2'
 services:
   conjur:
-    image: registry.tld/conjur-appliance:4.9.13.0
+    image: registry.tld/conjur-appliance:4.9.17.0
     hostname: conjur
     security_opt:
       - label:seccomp:undefined
@@ -20,7 +20,7 @@ services:
     restart: always
 
   puppet:
-    image: my-puppet-enterprise:2017.3.1
+    image: my-puppet-enterprise:2017.3.5
     environment:
       AUTOSIGN: "true"
       TERM: "xterm"
